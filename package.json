@@ -1,0 +1,26 @@
+{
+  "name": "love-letters",
+  "version": "1.0.0",
+  "description": "Esse projeto foi feito como um presente de aniversário de namoro para minha namorada. Ele é um site que contém uma carta de amor que eu escrevi para ela. Também é possível escrever outras cartas.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oThinas/love-letters.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oThinas/love-letters/issues"
+  },
+  "homepage": "https://github.com/oThinas/love-letters#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}
