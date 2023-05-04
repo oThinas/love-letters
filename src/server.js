@@ -12,5 +12,4 @@ app.use(express.static(publicDir));
 const server = http.createServer(app);
 server.listen(process.env.PORT || 3000, () => console.log('Server is running'));
 
-const io = new Server(server);
-io.on('connection', () => console.log('Client connected'));
+export const io = new Server(server);
