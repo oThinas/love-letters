@@ -3,7 +3,9 @@ import { setText } from './document.js';
 const socket = io();
 
 export function getDocument(documentName) {
-  socket.emit('client get document', documentName);
+  socket.emit('client get document', documentName, (data) => {
+    setText(data);
+  });
 }
 
 export function emitText(text, documentName) {
