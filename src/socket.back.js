@@ -2,7 +2,10 @@ import { documentsCollection } from './db.connect.js';
 import { io } from './server.js';
 
 io.on('connection', (socket) => {
-  console.log('Client connected');
+  socket.on('client get documents', async (sendDocuments) => {
+    const documents = await documentsCollection.find().toArray();
+    sendDocuments(documents);
+  });
 
   socket.on('client get document', async (documentName, responseText) => {
     socket.join(documentName);

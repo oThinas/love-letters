@@ -1,4 +1,4 @@
-import { emitText, getDocument } from './socket.front.js';
+import { emitText, getDocument } from './socket.front.document.js';
 
 const documentName = new URLSearchParams(window.location.search).get('name');
 const documentTitleElement = document.querySelector('#document-title');
