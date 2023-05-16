@@ -4,6 +4,8 @@ import path from 'path';
 import http from 'http';
 import { Server } from 'socket.io';
 
+import './db.connect.js';
+
 const app = express();
 const currentPath = url.fileURLToPath(import.meta.url);
 const publicDir = path.join(currentPath, '../..', 'public');
