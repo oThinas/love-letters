@@ -1,7 +1,8 @@
-import { emitText, getDocument } from './socket.front.document.js';
+import { deleteDocument, emitText, getDocument } from './socket.front.document.js';
 
 const documentName = new URLSearchParams(window.location.search).get('name');
 const documentTitleElement = document.querySelector('#document-title');
+const deleteButtonElement = document.querySelector('#delete-document');
 
 documentTitleElement.textContent = documentName || 'Documento sem título';
 
@@ -14,4 +15,11 @@ textareaElement.addEventListener('keyup', () => {
 
 export function setText(text) {
   textareaElement.value = text;
+}
+
+deleteButtonElement.addEventListener('click', () => deleteDocument(documentName));
+
+export function alertUser(documentName) {
+  alert(`O documento "${documentName}" foi deletado.`);
+  window.location.href = '/';
 }

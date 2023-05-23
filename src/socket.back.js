@@ -1,4 +1,4 @@
-import { getAllDocuments, getDocument, insertDocument, updateDocument } from './documents.crud.js';
+import { deleteDocument, getAllDocuments, getDocument, insertDocument, updateDocument } from './documents.crud.js';
 import { io } from './server.js';
 
 io.on('connection', (socket) => {
@@ -33,6 +33,12 @@ io.on('connection', (socket) => {
     if (updateResponse.modifiedCount) {
       socket.to(documentName).emit('server typing', text);
     }
-  }); 
-});
+  });
 
+  socket.on('client delete document', async (documentName) => {
+    const response = await deleteDocument(documentName);
+    if (response.deletedCount) {
+      io.emit('server delete document', documentName);
+    }
+  });
+});

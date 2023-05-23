@@ -1,4 +1,4 @@
-import { setText } from './document.js';
+import { alertUser, setText } from './document.js';
 
 const socket = io();
 
@@ -12,6 +12,10 @@ export function emitText(text, documentName) {
   socket.emit('client typing', { text, documentName });
 }
 
-socket.on('server typing', (data) => {
-  setText(data);
-});
+export function deleteDocument(documentName) {
+  socket.emit('client delete document', documentName);
+}
+
+socket.on('server typing', (data) => setText(data));
+
+socket.on('server delete document', (documentName) => alertUser(documentName));

@@ -15,3 +15,7 @@ export function insertDocument(documentName) {
 export function updateDocument(documentName, text) {
   return documentsCollection.updateOne({ name: documentName }, { $set: { content: text } });
 }
+
+export function deleteDocument(documentName) {
+  return documentsCollection.deleteOne({ name: documentName });
+}
