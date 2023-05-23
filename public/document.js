@@ -20,6 +20,8 @@ export function setText(text) {
 deleteButtonElement.addEventListener('click', () => deleteDocument(documentName));
 
 export function alertUser(documentName) {
-  alert(`O documento "${documentName}" foi deletado.`);
-  window.location.href = '/';
+  if (documentName === documentTitleElement.textContent) {
+    alert(`O documento "${documentName}" foi deletado.`);
+    window.location.href = '/';
+  }
 }
