@@ -1,4 +1,4 @@
-import { alertInvalidName, insertDocumentLink } from './index.js';
+import { alertInvalidName, insertDocumentLink, removeDocumentLink } from './index.js';
 
 const socket = io();
 
@@ -19,3 +19,5 @@ socket.on('server add document', (documentName) => {
 socket.on('server document already exists', (documentName) => {
   alertInvalidName(documentName);
 });
+
+socket.on('server delete document', (documentName) => removeDocumentLink(documentName));

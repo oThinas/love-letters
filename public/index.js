@@ -13,7 +13,11 @@ formElement.addEventListener('submit', (event) => {
 
 export function insertDocumentLink(documentName) {
   listElement.innerHTML += `
-    <a href="document.html?name=${documentName}" class="list-group-item list-group-item-action">
+    <a
+      href="document.html?name=${documentName}"
+      class="list-group-item list-group-item-action"
+      id="${documentName}"
+    >
       ${documentName}
     </a>
   `;
@@ -22,4 +26,9 @@ export function insertDocumentLink(documentName) {
 export function alertInvalidName(documentName) {
   inputElement.classList.add('is-invalid');
   feedbackElement.innerHTML = `Documento ${documentName} já existe`;
+}
+
+export function removeDocumentLink(documentName) {
+  const documentLinkElement = document.querySelector(`#${documentName}`);
+  listElement.removeChild(documentLinkElement);
 }
