@@ -1,4 +1,4 @@
-import { insertDocumentLink } from './index.js';
+import { alertInvalidName, insertDocumentLink } from './index.js';
 
 const socket = io();
 
@@ -15,3 +15,7 @@ export function addDocumet(documentName) {
 socket.on('server add document', (documentName) => {
   insertDocumentLink(documentName);
 })
+
+socket.on('server document already exists', (documentName) => {
+  alertInvalidName(documentName);
+});

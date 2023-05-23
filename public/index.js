@@ -3,6 +3,7 @@ import { addDocumet } from './socket.front.index.js';
 const listElement = document.querySelector('#document-list');
 const formElement = document.querySelector('#form-add-document');
 const inputElement = document.querySelector('#name');
+const feedbackElement = document.querySelector('#feedback')
 
 formElement.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -16,4 +17,9 @@ export function insertDocumentLink(documentName) {
       ${documentName}
     </a>
   `;
+}
+
+export function alertInvalidName(documentName) {
+  inputElement.classList.add('is-invalid');
+  feedbackElement.innerHTML = `Documento ${documentName} já existe`;
 }

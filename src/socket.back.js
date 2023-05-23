@@ -8,9 +8,14 @@ io.on('connection', (socket) => {
   });
 
   socket.on('client add document', async (documentName) => {
-    const response = await insertDocument(documentName);
-    if (response.acknowledged) {
-      io.emit('server add document', documentName);
+    const hasDocumentWithSameName = (await getDocument(documentName)) !== null;
+    if (hasDocumentWithSameName) {
+      socket.emit('server document already exists', documentName);
+    } else {
+      const response = await insertDocument(documentName);
+      if (response.acknowledged) {
+        io.emit('server add document', documentName);
+      }
     }
   });
 
