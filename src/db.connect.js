@@ -10,7 +10,7 @@ try {
   await client.connect();
   const db = client.db('love-letters');
   documentsCollection = db.collection('letters');
-  console.log('Conectado com sucesso!');
+  console.log('Conectado ao banco de dados com sucesso!');
 } catch (error) {
   console.log(error);
 }

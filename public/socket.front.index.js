@@ -8,3 +8,10 @@ socket.emit('client get documents', (data) => {
   });
 });
 
+export function addDocumet(documentName) {
+  socket.emit('client add document', documentName);
+}
+
+socket.on('server add document', (documentName) => {
+  insertDocumentLink(documentName);
+})
